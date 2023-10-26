@@ -6,6 +6,7 @@ urlpatterns = [
    path('cadastrar_aluno/', views.create, name="cadastrar_aluno"),
     path('<int:aluno_id>/', views.visualizar_aluno, name='visualizar_aluno'),
     path('remover/<int:aluno_id>/', views.remover_aluno, name='remover_aluno'),
+     path('editar/<int:aluno_id>/', views.editar_aluno, name='editar_aluno'),
    
 ]
 

@@ -29,3 +29,15 @@ def remover_aluno(request, aluno_id):
     aluno = get_object_or_404(Aluno, pk=aluno_id)
     aluno.delete()
     return redirect('alunos')
+
+def editar_aluno(request, aluno_id):
+    aluno = get_object_or_404(Aluno, pk=aluno_id)
+
+    if request.method == 'POST':
+        form = AlunoForm(request.POST, instance=aluno) 
+        if form.is_valid():
+            form.save()
+            return redirect('alunos') 
+    else:
+        form = AlunoForm(instance=aluno)  
+    return render(request, 'editar_aluno.html', {'form': form, 'aluno': aluno})
