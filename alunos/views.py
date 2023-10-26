@@ -1,5 +1,5 @@
 
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from .models import Aluno
 from .forms import AlunoForm
 
@@ -19,3 +19,13 @@ def create(request):
         form = AlunoForm()
     
     return render(request, 'cadastro.html', {'form': form})
+
+
+def visualizar_aluno(request, aluno_id):
+    aluno = get_object_or_404(Aluno, pk=aluno_id)
+    return render(request, 'detalhes.html', {'aluno': aluno})
+
+def remover_aluno(request, aluno_id):
+    aluno = get_object_or_404(Aluno, pk=aluno_id)
+    aluno.delete()
+    return redirect('alunos')
