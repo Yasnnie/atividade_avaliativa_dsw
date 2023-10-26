@@ -1,6 +1,7 @@
 from django.db import models
 from cidades.models import Cidade
 from cursos.models import Curso
+
 # Create your models here.
 
 class Aluno(models.Model):
@@ -9,7 +10,6 @@ class Aluno(models.Model):
     email = models.EmailField()
     data_nascimento = models.DateField()
   
-
     cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, blank=True)
     curso = models.ForeignKey(Curso, on_delete=models.SET_NULL, null=True, blank=True)
 
